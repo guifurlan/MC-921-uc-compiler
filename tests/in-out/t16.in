@@ -1,0 +1,18 @@
+// print function
+int f(int m, int n) {
+    if (! (n >= 2)) {
+        n -= 2;
+        return n;
+    }
+    else {
+        m--;
+        return m;
+    }
+}
+
+int main() {
+    int m = -9;
+    int n = 4;
+    print(f(m, n));
+    return 0;
+}

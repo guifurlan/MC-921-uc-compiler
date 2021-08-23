@@ -1,0 +1,15 @@
+digraph g {
+	node [shape=record]
+	"%main" [label="{%main:\l	entry:\l	  %1 = alloc int \l	  %i = alloc int \l	  %n = alloc int \l	  %t1 = alloc int \l	  %2 = literal int 0 \l	  store int %2 %t1 \l	  %t2 = alloc int \l	  %3 = literal int 1 \l	  store int %3 %t2 \l	  %nextTerm = alloc int \l	  print string @.str.0\l	  %4 = literal int 10 \l	  store int %4 %n \l	  print string @.str.1\l	  %5 = literal int 1 \l	  store int %5 %i \l	  jump label %for.cond\l	}"]
+	"%main" -> "%for.cond"
+	"%for.cond" [label="{%for.cond:\l	  %6 = load int %n \l	  %7 = load int %i \l	  %8 = le int %7 %6 \l	  cbranch %8 label %for.body label %for.end\l	|{<f0>T|<f1>F}}"]
+	"%for.cond":f0 -> "%for.body"
+	"%for.cond":f1 -> "%for.end"
+	"%for.body" [label="{%for.body:\l	  %9 = load int %t1 \l	  print int %9\l	  print string @.str.2\l	  %10 = load int %t2 \l	  %11 = load int %t1 \l	  %12 = add int %11 %10 \l	  store int %12 %nextTerm \l	  %13 = load int %t2 \l	  store int %13 %t1 \l	  %14 = load int %nextTerm \l	  store int %14 %t2 \l	  jump label %for.inc\l	}"]
+	"%for.body" -> "%for.inc"
+	"%for.inc" [label="{%for.inc:\l	  %15 = load int %i \l	  %16 = literal int 1 \l	  %17 = add int %15 %16 \l	  store int %17 %i \l	  store int %15 %i \l	  jump label %for.cond\l	}"]
+	"%for.inc" -> "%for.cond"
+	"%for.end" [label="{%for.end:\l	  %18 = literal int 0 \l	  store int %18 %1 \l	  jump label %exit\l	}"]
+	"%for.end" -> "%exit"
+	"%exit" [label="{%exit:\l	  %19 = load int %1 \l	  return int %19\l	}"]
+}
