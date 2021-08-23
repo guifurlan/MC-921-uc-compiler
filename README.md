@@ -1,7 +1,7 @@
 # MC-921-uc-compiler
 uC compiler built to (MC-921): Compiler construction course  by the Institute of Computing at Unicamp.
 
-##Team:
+## Team:
 Guilherme Furlan e Ana Requena
 
 ## Requirements
